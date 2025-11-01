@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -39,9 +40,9 @@ const classByDate: Record<number, { title: string; discipline: Disciplina; time:
 };
 
 const disciplineColors: Record<Disciplina, string> = {
-  Yoga: '#FFC49B',
+  Yoga: '#6BD9C7',
   'Híbrido': Colors.light.tint,
-  Pilates: '#FFE6D1',
+  Pilates: '#BCEFE3',
 };
 
 const monthLabel = 'Novembro 2024';
@@ -59,7 +60,7 @@ export default function CalendarScreen() {
   const selectedDateLabel = selectedDate ? `${selectedDate} de novembro` : 'este dia';
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Calendário da clínica</Text>
         <Text style={styles.subtitle}>
@@ -149,38 +150,39 @@ export default function CalendarScreen() {
           )}
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: Colors.light.muted,
   },
   content: {
     paddingHorizontal: 24,
-    paddingVertical: 32,
+    paddingTop: 24,
+    paddingBottom: 36,
     gap: 24,
   },
   title: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#1F1F24',
+    color: '#103831',
   },
   subtitle: {
     fontSize: 15,
-    color: '#5C5C63',
+    color: '#3E7469',
     lineHeight: 22,
   },
   calendarCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 28,
     padding: 24,
     gap: 18,
-    shadowColor: '#FF6B00',
-    shadowOpacity: 0.1,
-    shadowRadius: 20,
+    shadowColor: '#1AA18C',
+    shadowOpacity: 0.12,
+    shadowRadius: 22,
     shadowOffset: { width: 0, height: 8 },
     elevation: 4,
   },
@@ -192,11 +194,11 @@ const styles = StyleSheet.create({
   monthLabel: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   monthSubLabel: {
     fontSize: 13,
-    color: '#6C6C70',
+    color: '#3E7469',
     marginTop: 4,
   },
   legendRow: {
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
   legendLabel: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#6C6C70',
+    color: '#3E7469',
   },
   weekRow: {
     flexDirection: 'row',
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 13,
     fontWeight: '700',
-    color: '#AA4F15',
+    color: '#188B7A',
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
@@ -237,7 +239,7 @@ const styles = StyleSheet.create({
   },
   dayCell: {
     flex: 1,
-    backgroundColor: '#FFF7EF',
+    backgroundColor: '#E0F7F1',
     borderRadius: 16,
     marginHorizontal: 4,
     paddingVertical: 12,
@@ -247,7 +249,7 @@ const styles = StyleSheet.create({
   dayCellSelected: {
     borderWidth: 2,
     borderColor: Colors.light.tint,
-    backgroundColor: '#FFE9D6',
+    backgroundColor: '#C0EEE3',
   },
   dayCellToday: {
     shadowColor: Colors.light.tint,
@@ -259,13 +261,13 @@ const styles = StyleSheet.create({
   dayNumber: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   dayNumberToday: {
     color: Colors.light.tint,
   },
   dayNumberSelected: {
-    color: Colors.light.tint,
+    color: '#0F2F2B',
   },
   dotRow: {
     flexDirection: 'row',
@@ -279,20 +281,20 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   detailsCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 24,
     gap: 16,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.08,
-    shadowRadius: 18,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 6 },
     elevation: 3,
   },
   detailsTitle: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   detailsList: {
     gap: 16,
@@ -314,14 +316,14 @@ const styles = StyleSheet.create({
   classTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   classMeta: {
     fontSize: 13,
-    color: '#6C6C70',
+    color: '#3E7469',
   },
   emptyText: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
   },
 });

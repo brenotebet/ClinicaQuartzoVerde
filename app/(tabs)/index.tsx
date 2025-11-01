@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -22,7 +23,7 @@ const featuredClasses = [
 
 export default function DashboardScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
           <Text style={styles.heroGreeting}>Olá, atleta!</Text>
@@ -65,7 +66,7 @@ export default function DashboardScreen() {
         </View>
         <View style={styles.splitCard}>
           <View style={styles.splitRow}>
-            <View style={[styles.splitDot, { backgroundColor: '#FF9152' }]} />
+            <View style={[styles.splitDot, { backgroundColor: '#2FB89B' }]} />
             <View style={styles.splitTextGroup}>
               <Text style={styles.splitLabel}>Treino híbrido</Text>
               <Text style={styles.splitMeta}>2 de 4 agendados</Text>
@@ -74,7 +75,7 @@ export default function DashboardScreen() {
           </View>
           <View style={styles.splitDivider} />
           <View style={styles.splitRow}>
-            <View style={[styles.splitDot, { backgroundColor: '#FFC49B' }]} />
+            <View style={[styles.splitDot, { backgroundColor: '#6ADBC8' }]} />
             <View style={styles.splitTextGroup}>
               <Text style={styles.splitLabel}>Yoga</Text>
               <Text style={styles.splitMeta}>1 de 2 agendados</Text>
@@ -83,7 +84,7 @@ export default function DashboardScreen() {
           </View>
           <View style={styles.splitDivider} />
           <View style={styles.splitRow}>
-            <View style={[styles.splitDot, { backgroundColor: '#FFE6D1' }]} />
+            <View style={[styles.splitDot, { backgroundColor: '#CDEFE5' }]} />
             <View style={styles.splitTextGroup}>
               <Text style={styles.splitLabel}>Pilates</Text>
               <Text style={styles.splitMeta}>0 de 1 agendado</Text>
@@ -92,18 +93,19 @@ export default function DashboardScreen() {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: Colors.light.muted,
   },
   content: {
     paddingHorizontal: 24,
-    paddingVertical: 32,
+    paddingTop: 24,
+    paddingBottom: 36,
     gap: 24,
   },
   hero: {
@@ -111,9 +113,9 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     padding: 28,
     gap: 8,
-    shadowColor: '#FF6B00',
-    shadowOpacity: 0.2,
-    shadowRadius: 20,
+    shadowColor: '#1AA18C',
+    shadowOpacity: 0.18,
+    shadowRadius: 22,
     shadowOffset: { width: 0, height: 10 },
   },
   heroGreeting: {
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   heroSubtitle: {
-    color: '#FFEEDA',
+    color: '#DAF7EF',
     fontSize: 14,
     marginTop: 4,
   },
@@ -142,7 +144,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 18,
     borderRadius: 999,
-    backgroundColor: '#FFE1CA',
+    backgroundColor: '#C9F1E6',
   },
   heroPillPrimary: {
     backgroundColor: '#fff',
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   heroPillTextDark: {
-    color: '#AA4F15',
+    color: '#0F2F2B',
     fontSize: 13,
     fontWeight: '700',
     letterSpacing: 1,
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   sectionAction: {
     fontSize: 13,
@@ -182,33 +184,33 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   sessionCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 24,
     gap: 8,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.08,
-    shadowRadius: 18,
-    shadowOffset: { width: 0, height: 6 },
+    shadowRadius: 20,
+    shadowOffset: { width: 0, height: 8 },
     elevation: 3,
   },
   sessionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   sessionTime: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
   },
   sessionFocus: {
     fontSize: 14,
-    color: '#AA4F15',
+    color: '#1A8F7A',
     fontWeight: '600',
   },
   progressBar: {
     height: 6,
-    backgroundColor: '#F1D9C6',
+    backgroundColor: '#CDEFE5',
     borderRadius: 999,
     marginTop: 12,
   },
@@ -219,7 +221,7 @@ const styles = StyleSheet.create({
   },
   spotsLabel: {
     fontSize: 13,
-    color: '#6C6C70',
+    color: '#3E7469',
     marginTop: 8,
   },
   splitCard: {
@@ -227,9 +229,9 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 24,
     gap: 18,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.08,
-    shadowRadius: 18,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 6 },
     elevation: 3,
   },
@@ -250,11 +252,11 @@ const styles = StyleSheet.create({
   splitLabel: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   splitMeta: {
     fontSize: 13,
-    color: '#6C6C70',
+    color: '#3E7469',
     marginTop: 2,
   },
   splitValue: {
@@ -264,6 +266,6 @@ const styles = StyleSheet.create({
   },
   splitDivider: {
     height: 1,
-    backgroundColor: '#F1D9C6',
+    backgroundColor: '#CDEFE5',
   },
 });

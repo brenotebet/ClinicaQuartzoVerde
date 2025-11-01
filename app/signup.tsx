@@ -9,6 +9,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -16,7 +17,7 @@ export default function SignupScreen() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.flex}
@@ -45,29 +46,29 @@ export default function SignupScreen() {
             <View style={styles.fieldRow}>
               <View style={styles.fieldHalf}>
                 <Text style={styles.fieldLabel}>Nome</Text>
-                <TextInput placeholder="Ana" placeholderTextColor="#B0B0B5" style={styles.input} />
+                <TextInput placeholder="Ana" placeholderTextColor="#8FC6BB" style={styles.input} />
               </View>
               <View style={styles.fieldHalf}>
                 <Text style={styles.fieldLabel}>Sobrenome</Text>
-                <TextInput placeholder="Silva" placeholderTextColor="#B0B0B5" style={styles.input} />
+                <TextInput placeholder="Silva" placeholderTextColor="#8FC6BB" style={styles.input} />
               </View>
             </View>
             <View style={styles.fieldGroup}>
               <Text style={styles.fieldLabel}>E-mail</Text>
               <TextInput
                 placeholder="voce@exemplo.com"
-                placeholderTextColor="#B0B0B5"
+                placeholderTextColor="#8FC6BB"
                 keyboardType="email-address"
                 style={styles.input}
               />
             </View>
             <View style={styles.fieldGroup}>
               <Text style={styles.fieldLabel}>Celular</Text>
-              <TextInput placeholder="(11) 99999-9999" placeholderTextColor="#B0B0B5" style={styles.input} />
+              <TextInput placeholder="(11) 99999-9999" placeholderTextColor="#8FC6BB" style={styles.input} />
             </View>
             <View style={styles.fieldGroup}>
               <Text style={styles.fieldLabel}>Senha</Text>
-              <TextInput placeholder="Crie uma senha" placeholderTextColor="#B0B0B5" secureTextEntry style={styles.input} />
+              <TextInput placeholder="Crie uma senha" placeholderTextColor="#8FC6BB" secureTextEntry style={styles.input} />
             </View>
             <Pressable style={styles.primaryButton} onPress={() => router.replace('/(tabs)')}>
               <Text style={styles.primaryButtonText}>Continuar</Text>
@@ -84,7 +85,7 @@ export default function SignupScreen() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -92,11 +93,11 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   container: {
     flex: 1,
-    backgroundColor: '#FFF7EF',
+    backgroundColor: Colors.light.background,
   },
   content: {
-    paddingTop: 80,
-    paddingBottom: 40,
+    paddingTop: 48,
+    paddingBottom: 36,
     paddingHorizontal: 24,
     gap: 24,
   },
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 15,
-    color: '#5C5C63',
+    color: '#3E7469',
     lineHeight: 22,
   },
   progressRow: {
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 18,
     borderRadius: 20,
-    backgroundColor: '#FFE1CA',
+    backgroundColor: '#CDEFE5',
   },
   progressStepActive: {
     backgroundColor: Colors.light.tint,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   progressLabelInactive: {
-    color: '#B35C2E',
+    color: '#1A8F7A',
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 1,
@@ -140,16 +141,16 @@ const styles = StyleSheet.create({
   progressConnector: {
     width: 16,
     height: 2,
-    backgroundColor: '#FFC49B',
+    backgroundColor: '#BCEFE3',
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 24,
     gap: 20,
-    shadowColor: '#FF7A1A',
-    shadowOpacity: 0.1,
-    shadowRadius: 20,
+    shadowColor: '#1AA18C',
+    shadowOpacity: 0.12,
+    shadowRadius: 22,
     shadowOffset: { width: 0, height: 12 },
     elevation: 4,
   },
@@ -167,18 +168,19 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#1F1F24',
+    color: '#103831',
     textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
   input: {
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#E5E5EA',
+    borderColor: '#CDEFE5',
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
-    backgroundColor: '#FDFDFE',
+    backgroundColor: '#FFFFFF',
+    color: '#103831',
   },
   primaryButton: {
     marginTop: 8,
@@ -201,7 +203,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   footerText: {
-    color: '#6C6C70',
+    color: '#3E7469',
     fontSize: 14,
   },
   linkBold: {

@@ -9,6 +9,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -16,7 +17,7 @@ export default function LoginScreen() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.flex}
@@ -48,14 +49,14 @@ export default function LoginScreen() {
               <Text style={styles.fieldLabel}>E-mail</Text>
               <TextInput
                 placeholder="voce@exemplo.com"
-                placeholderTextColor="#B0B0B5"
+                placeholderTextColor="#8FC6BB"
                 keyboardType="email-address"
                 style={styles.input}
               />
             </View>
             <View style={styles.fieldGroup}>
               <Text style={styles.fieldLabel}>Senha</Text>
-              <TextInput placeholder="••••••••" placeholderTextColor="#B0B0B5" secureTextEntry style={styles.input} />
+              <TextInput placeholder="••••••••" placeholderTextColor="#8FC6BB" secureTextEntry style={styles.input} />
             </View>
             <Pressable style={styles.primaryButton} onPress={() => router.replace('/(tabs)')}>
               <Text style={styles.primaryButtonText}>Entrar</Text>
@@ -75,7 +76,7 @@ export default function LoginScreen() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -88,9 +89,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.background,
   },
   content: {
-    paddingTop: 80,
-    paddingBottom: 40,
+    paddingTop: 48,
+    paddingBottom: 36,
     paddingHorizontal: 24,
+    gap: 24,
   },
   brandRow: {
     flexDirection: 'row',
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   brandSubtitle: {
-    color: '#1A1A1A',
+    color: '#103831',
     fontSize: 14,
     fontWeight: '500',
     letterSpacing: 2,
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     borderRadius: 28,
     padding: 28,
-    backgroundColor: '#FFF4EA',
+    backgroundColor: '#D7F5ED',
     overflow: 'hidden',
   },
   heroOrbLarge: {
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
     width: 220,
     height: 220,
     borderRadius: 110,
-    backgroundColor: '#FFD5B5',
+    backgroundColor: '#A8E8DB',
     top: -100,
     right: -80,
     opacity: 0.4,
@@ -147,40 +149,40 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.tint,
     bottom: -40,
     left: -40,
-    opacity: 0.15,
+    opacity: 0.18,
   },
   heroHeadline: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#1F1F24',
+    color: '#103831',
   },
   heroTagline: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
     marginTop: 8,
     letterSpacing: 1.2,
     textTransform: 'uppercase',
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 24,
     marginTop: 32,
     gap: 16,
-    shadowColor: '#FF7A1A',
-    shadowOpacity: 0.15,
-    shadowRadius: 20,
+    shadowColor: '#1AA18C',
+    shadowOpacity: 0.12,
+    shadowRadius: 22,
     shadowOffset: { width: 0, height: 10 },
     elevation: 6,
   },
   cardTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   cardSubtitle: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
     lineHeight: 20,
   },
   fieldGroup: {
@@ -189,18 +191,19 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#1F1F24',
+    color: '#103831',
     textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
   input: {
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#E5E5EA',
+    borderColor: '#CDEFE5',
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
-    backgroundColor: '#FDFDFE',
+    backgroundColor: '#FFFFFF',
+    color: '#103831',
   },
   primaryButton: {
     marginTop: 12,
@@ -217,8 +220,11 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   link: {
+    marginTop: 8,
     color: Colors.light.tint,
     fontWeight: '600',
+    fontSize: 13,
+    letterSpacing: 0.5,
     textAlign: 'center',
   },
   footerRow: {
@@ -229,7 +235,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   footerText: {
-    color: '#6C6C70',
+    color: '#3E7469',
     fontSize: 14,
   },
   linkBold: {

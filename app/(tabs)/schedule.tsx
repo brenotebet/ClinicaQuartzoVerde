@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -61,7 +62,7 @@ const schedule = [
 
 export default function ScheduleScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Agende seu próximo treino</Text>
         <Text style={styles.subtitle}>
@@ -104,28 +105,29 @@ export default function ScheduleScreen() {
           </View>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: Colors.light.muted,
   },
   content: {
     paddingHorizontal: 24,
-    paddingVertical: 32,
+    paddingTop: 24,
+    paddingBottom: 36,
     gap: 24,
   },
   title: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#1F1F24',
+    color: '#103831',
   },
   subtitle: {
     fontSize: 15,
-    color: '#5C5C63',
+    color: '#3E7469',
     lineHeight: 22,
   },
   filterRow: {
@@ -135,7 +137,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 18,
     borderRadius: 999,
-    backgroundColor: '#F5D9C4',
+    backgroundColor: '#CDEFE5',
   },
   filterChipActive: {
     backgroundColor: Colors.light.tint,
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 1,
     textTransform: 'uppercase',
-    color: '#A35B28',
+    color: '#1C6F62',
   },
   filterTextActive: {
     color: '#fff',
@@ -156,18 +158,18 @@ const styles = StyleSheet.create({
   sectionLabel: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#6C6C70',
+    color: '#1A8F7A',
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
   sectionCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 20,
     gap: 20,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.08,
-    shadowRadius: 18,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 6 },
     elevation: 3,
   },
@@ -177,22 +179,22 @@ const styles = StyleSheet.create({
   className: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   classMeta: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
   },
   classMood: {
     fontSize: 13,
-    color: '#AA4F15',
+    color: '#1A8F7A',
     marginTop: 4,
     fontWeight: '600',
   },
   coachBadge: {
     marginTop: 12,
     alignSelf: 'flex-start',
-    backgroundColor: '#FFF4EA',
+    backgroundColor: '#DAF7F0',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -201,18 +203,18 @@ const styles = StyleSheet.create({
     fontSize: 11,
     letterSpacing: 1,
     textTransform: 'uppercase',
-    color: '#AA4F15',
+    color: '#188B7A',
     fontWeight: '700',
   },
   coachName: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#1F1F24',
+    color: '#103831',
     marginTop: 4,
   },
   divider: {
     height: 1,
-    backgroundColor: '#F3D6C0',
+    backgroundColor: '#CDEFE5',
     marginTop: 16,
   },
 });

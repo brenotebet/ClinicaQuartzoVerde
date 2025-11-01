@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -38,7 +39,7 @@ const quickActions = [
 
 export default function ManageScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Gerencie sua agenda</Text>
         <Text style={styles.subtitle}>
@@ -102,39 +103,40 @@ export default function ManageScreen() {
           ))}
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: Colors.light.muted,
   },
   content: {
     paddingHorizontal: 24,
-    paddingVertical: 32,
+    paddingTop: 24,
+    paddingBottom: 36,
     gap: 24,
   },
   title: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#1F1F24',
+    color: '#103831',
   },
   subtitle: {
     fontSize: 15,
-    color: '#5C5C63',
+    color: '#3E7469',
     lineHeight: 22,
   },
   alertCard: {
-    backgroundColor: '#FFE9D6',
+    backgroundColor: '#D7F5ED',
     borderRadius: 24,
     padding: 24,
     gap: 12,
   },
   alertBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 6,
     paddingHorizontal: 14,
     borderRadius: 999,
@@ -149,11 +151,11 @@ const styles = StyleSheet.create({
   alertTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   alertDescription: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
     lineHeight: 20,
   },
   sectionHeader: {
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   sectionAction: {
     fontSize: 13,
@@ -174,13 +176,13 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 24,
     gap: 24,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.08,
-    shadowRadius: 18,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 6 },
     elevation: 3,
   },
@@ -194,11 +196,11 @@ const styles = StyleSheet.create({
   manageName: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#1F1F24',
+    color: '#103831',
   },
   manageMeta: {
     fontSize: 14,
-    color: '#6C6C70',
+    color: '#3E7469',
     marginTop: 2,
   },
   statusTag: {
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   statusWaitlist: {
-    backgroundColor: '#FFE1CA',
+    backgroundColor: '#CDEFE5',
   },
   statusText: {
     color: '#fff',
@@ -219,11 +221,11 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   statusTextDark: {
-    color: '#AA4F15',
+    color: '#188B7A',
   },
   coachLabel: {
     fontSize: 13,
-    color: '#AA4F15',
+    color: '#188B7A',
     fontWeight: '600',
   },
   actionRow: {
@@ -235,16 +237,16 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderRadius: 999,
-    backgroundColor: '#FFF4EA',
+    backgroundColor: '#CDEFE5',
   },
   actionChipText: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#AA4F15',
+    color: '#0F2F2B',
   },
   divider: {
     height: 1,
-    backgroundColor: '#F3D6C0',
+    backgroundColor: '#CDEFE5',
     marginTop: 16,
   },
   quickActionGrid: {
@@ -254,19 +256,19 @@ const styles = StyleSheet.create({
   },
   quickActionCard: {
     flexBasis: '48%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 18,
     padding: 18,
-    shadowColor: '#FF6B00',
+    shadowColor: '#1AA18C',
     shadowOpacity: 0.06,
-    shadowRadius: 16,
+    shadowRadius: 18,
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
   quickActionText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#1F1F24',
+    color: '#103831',
     lineHeight: 20,
   },
 });
