@@ -1,5 +1,6 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Link } from 'expo-router';
 
 import { Colors } from '@/constants/theme';
 
@@ -11,6 +12,7 @@ const profileShortcuts = [
   {
     title: 'Formas de pagamento',
     description: 'Gerencie cartões salvos, pix recorrente e notas fiscais.',
+    href: '/(tabs)/more/payments',
   },
   {
     title: 'Histórico de cobranças',
@@ -50,15 +52,38 @@ export default function MoreScreen() {
           </Text>
 
           <View style={styles.list}>
-            {profileShortcuts.map((item) => (
-              <View key={item.title} style={styles.listItem}>
-                <View style={styles.listBullet} />
-                <View style={styles.listContent}>
-                  <Text style={styles.listTitle}>{item.title}</Text>
-                  <Text style={styles.listDescription}>{item.description}</Text>
+            {profileShortcuts.map((item) => {
+              const content = (
+                <>
+                  <View style={styles.listBullet} />
+                  <View style={styles.listContent}>
+                    <Text style={styles.listTitle}>{item.title}</Text>
+                    <Text style={styles.listDescription}>{item.description}</Text>
+                  </View>
+                </>
+              );
+
+              if (item.href) {
+                return (
+                  <Link key={item.title} href={item.href} asChild>
+                    <Pressable
+                      style={({ pressed }) => [
+                        styles.listItem,
+                        styles.listItemInteractive,
+                        pressed && styles.listItemPressed,
+                      ]}>
+                      {content}
+                    </Pressable>
+                  </Link>
+                );
+              }
+
+              return (
+                <View key={item.title} style={styles.listItem}>
+                  {content}
                 </View>
-              </View>
-            ))}
+              );
+            })}
           </View>
         </View>
 
@@ -161,6 +186,15 @@ const styles = StyleSheet.create({
   listItem: {
     flexDirection: 'row',
     gap: 16,
+    alignItems: 'flex-start',
+  },
+  listItemInteractive: {
+    borderRadius: 18,
+    paddingVertical: 6,
+    paddingHorizontal: 4,
+  },
+  listItemPressed: {
+    backgroundColor: '#D7F5ED',
   },
   listBullet: {
     width: 8,
