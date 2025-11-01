@@ -4,19 +4,19 @@ import { Colors } from '@/constants/theme';
 
 const featuredClasses = [
   {
-    title: 'Sunrise Flow Yoga',
-    time: '06:30 • Studio Aura',
-    focus: 'Mobility & Breathwork',
+    title: 'Yoga Amanhecer',
+    time: '06:30 • Estúdio Aura',
+    focus: 'Mobilidade e respiração',
   },
   {
-    title: 'Hybrid Ignite',
-    time: '12:30 • Studio Pulse',
-    focus: 'Row • Strength • Tread',
+    title: 'Treino Híbrido Ignite',
+    time: '12:30 • Estúdio Pulse',
+    focus: 'Remo • Força • Corrida',
   },
   {
-    title: 'Reformer Pilates Align',
-    time: '18:00 • Studio Core',
-    focus: 'Stability & Tone',
+    title: 'Pilates Reformer Align',
+    time: '18:00 • Estúdio Core',
+    focus: 'Estabilidade e tônus',
   },
 ];
 
@@ -26,14 +26,14 @@ export default function DashboardScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
           <Text style={styles.heroGreeting}>Olá, atleta!</Text>
-          <Text style={styles.heroTitle}>Your balanced week is ready</Text>
-          <Text style={styles.heroSubtitle}>Three disciplines. Endless energy.</Text>
+          <Text style={styles.heroTitle}>Sua semana equilibrada está pronta</Text>
+          <Text style={styles.heroSubtitle}>Três disciplinas. Energia infinita.</Text>
           <View style={styles.heroPillsRow}>
             <View style={[styles.heroPill, styles.heroPillPrimary]}>
               <Text style={styles.heroPillText}>Yoga</Text>
             </View>
             <View style={styles.heroPill}>
-              <Text style={styles.heroPillTextDark}>Hybrid</Text>
+              <Text style={styles.heroPillTextDark}>Híbrido</Text>
             </View>
             <View style={styles.heroPill}>
               <Text style={styles.heroPillTextDark}>Pilates</Text>
@@ -42,8 +42,8 @@ export default function DashboardScreen() {
         </View>
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Featured sessions</Text>
-          <Text style={styles.sectionAction}>See all</Text>
+          <Text style={styles.sectionTitle}>Sessões em destaque</Text>
+          <Text style={styles.sectionAction}>Ver tudo</Text>
         </View>
         <View style={styles.cardGrid}>
           {featuredClasses.map((item) => (
@@ -54,21 +54,21 @@ export default function DashboardScreen() {
               <View style={styles.progressBar}>
                 <View style={[styles.progressFill, { width: '68%' }]} />
               </View>
-              <Text style={styles.spotsLabel}>8 spots left</Text>
+              <Text style={styles.spotsLabel}>Restam 8 vagas</Text>
             </View>
           ))}
         </View>
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Weekly split</Text>
-          <Text style={styles.sectionAction}>Edit goal</Text>
+          <Text style={styles.sectionTitle}>Divisão da semana</Text>
+          <Text style={styles.sectionAction}>Editar meta</Text>
         </View>
         <View style={styles.splitCard}>
           <View style={styles.splitRow}>
             <View style={[styles.splitDot, { backgroundColor: '#FF9152' }]} />
             <View style={styles.splitTextGroup}>
-              <Text style={styles.splitLabel}>Hybrid Training</Text>
-              <Text style={styles.splitMeta}>2 of 4 booked</Text>
+              <Text style={styles.splitLabel}>Treino híbrido</Text>
+              <Text style={styles.splitMeta}>2 de 4 agendados</Text>
             </View>
             <Text style={styles.splitValue}>50%</Text>
           </View>
@@ -77,7 +77,7 @@ export default function DashboardScreen() {
             <View style={[styles.splitDot, { backgroundColor: '#FFC49B' }]} />
             <View style={styles.splitTextGroup}>
               <Text style={styles.splitLabel}>Yoga</Text>
-              <Text style={styles.splitMeta}>1 of 2 booked</Text>
+              <Text style={styles.splitMeta}>1 de 2 agendados</Text>
             </View>
             <Text style={styles.splitValue}>50%</Text>
           </View>
@@ -86,7 +86,7 @@ export default function DashboardScreen() {
             <View style={[styles.splitDot, { backgroundColor: '#FFE6D1' }]} />
             <View style={styles.splitTextGroup}>
               <Text style={styles.splitLabel}>Pilates</Text>
-              <Text style={styles.splitMeta}>0 of 1 booked</Text>
+              <Text style={styles.splitMeta}>0 de 1 agendado</Text>
             </View>
             <Text style={styles.splitValue}>0%</Text>
           </View>

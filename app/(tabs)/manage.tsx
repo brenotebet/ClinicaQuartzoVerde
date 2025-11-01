@@ -4,58 +4,60 @@ import { Colors } from '@/constants/theme';
 
 const managedClasses = [
   {
-    name: 'Hybrid Inferno',
-    status: 'Confirmed',
-    time: 'Today · 12:30',
+    name: 'Treino Híbrido Inferno',
+    status: 'Confirmada',
+    time: 'Hoje · 12:30',
     coach: 'Ricardo Lopes',
-    location: 'Studio Pulse',
-    actions: ['Reschedule', 'Add guest'],
+    location: 'Estúdio Pulse',
+    actions: ['Reagendar', 'Adicionar convidado'],
   },
   {
-    name: 'Reformer Pilates Align',
-    status: 'Waitlisted',
-    time: 'Tomorrow · 18:00',
+    name: 'Pilates Reformer Align',
+    status: 'Lista de espera',
+    time: 'Amanhã · 18:00',
     coach: 'Helena Prado',
-    location: 'Studio Core',
-    actions: ['Check status', 'Swap'],
+    location: 'Estúdio Core',
+    actions: ['Ver status', 'Trocar aula'],
   },
   {
-    name: 'Sunrise Flow Yoga',
-    status: 'Reserved',
-    time: 'Thursday · 06:30',
+    name: 'Yoga Sunrise Flow',
+    status: 'Reservada',
+    time: 'Quinta · 06:30',
     coach: 'Camila Duarte',
-    location: 'Studio Aura',
-    actions: ['Cancel', 'Invite friend'],
+    location: 'Estúdio Aura',
+    actions: ['Cancelar', 'Convidar amigo'],
   },
 ];
 
 const quickActions = [
-  'Freeze membership',
-  'Update training goal',
-  'Adjust heart rate zones',
-  'Download visit history',
+  'Pausar plano ativo',
+  'Atualizar meta de treinos',
+  'Ajustar zonas de frequência',
+  'Baixar histórico de visitas',
 ];
 
 export default function ManageScreen() {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Manage your schedule</Text>
-        <Text style={styles.subtitle}>Stay in control of every session across yoga, hybrid, and pilates.</Text>
+        <Text style={styles.title}>Gerencie sua agenda</Text>
+        <Text style={styles.subtitle}>
+          Mantenha o controle de cada sessão de yoga, treino híbrido e pilates.
+        </Text>
 
         <View style={styles.alertCard}>
           <View style={styles.alertBadge}>
-            <Text style={styles.alertBadgeText}>Spot opened!</Text>
+            <Text style={styles.alertBadgeText}>Vaga liberada!</Text>
           </View>
-          <Text style={styles.alertTitle}>Reformer Pilates Align · Waitlist #2</Text>
+          <Text style={styles.alertTitle}>Pilates Reformer Align · Lista #2</Text>
           <Text style={styles.alertDescription}>
-            Confirm within 2 hours to secure your reformer before it is released.
+            Confirme em até 2 horas para garantir seu reformer antes de liberar a vaga.
           </Text>
         </View>
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Upcoming bookings</Text>
-          <Text style={styles.sectionAction}>View history</Text>
+          <Text style={styles.sectionTitle}>Próximas reservas</Text>
+          <Text style={styles.sectionAction}>Ver histórico</Text>
         </View>
         <View style={styles.card}>
           {managedClasses.map((item, index) => (
@@ -66,17 +68,17 @@ export default function ManageScreen() {
                   <Text style={styles.manageMeta}>{item.time}</Text>
                   <Text style={styles.manageMeta}>{item.location}</Text>
                 </View>
-                <View style={[styles.statusTag, item.status === 'Waitlisted' && styles.statusWaitlist]}>
+                <View style={[styles.statusTag, item.status === 'Lista de espera' && styles.statusWaitlist]}>
                   <Text
                     style={[
                       styles.statusText,
-                      item.status === 'Waitlisted' && styles.statusTextDark,
+                      item.status === 'Lista de espera' && styles.statusTextDark,
                     ]}>
                     {item.status}
                   </Text>
                 </View>
               </View>
-              <Text style={styles.coachLabel}>Coach {item.coach}</Text>
+              <Text style={styles.coachLabel}>Instrutor(a) {item.coach}</Text>
               <View style={styles.actionRow}>
                 {item.actions.map((action) => (
                   <View key={action} style={styles.actionChip}>
@@ -90,7 +92,7 @@ export default function ManageScreen() {
         </View>
 
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Quick actions</Text>
+          <Text style={styles.sectionTitle}>Ações rápidas</Text>
         </View>
         <View style={styles.quickActionGrid}>
           {quickActions.map((action) => (

@@ -22,63 +22,63 @@ export default function SignupScreen() {
         style={styles.flex}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}>
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-          <Text style={styles.brandTitle}>Create your clinic membership</Text>
+          <Text style={styles.brandTitle}>Crie sua assinatura na clínica</Text>
           <Text style={styles.subtitle}>
-            Build a plan that keeps you balanced with Yoga, Hybrid Training, and Pilates rotations.
+            Monte um plano equilibrado com rotações de Yoga, Treino Híbrido e Pilates.
           </Text>
 
           <View style={styles.progressRow}>
             <View style={[styles.progressStep, styles.progressStepActive]}>
-              <Text style={styles.progressLabel}>Account</Text>
+              <Text style={styles.progressLabel}>Conta</Text>
             </View>
             <View style={styles.progressConnector} />
             <View style={styles.progressStep}>
-              <Text style={styles.progressLabelInactive}>Goals</Text>
+              <Text style={styles.progressLabelInactive}>Metas</Text>
             </View>
             <View style={styles.progressConnector} />
             <View style={styles.progressStep}>
-              <Text style={styles.progressLabelInactive}>Payment</Text>
+              <Text style={styles.progressLabelInactive}>Pagamento</Text>
             </View>
           </View>
 
           <View style={styles.card}>
             <View style={styles.fieldRow}>
               <View style={styles.fieldHalf}>
-                <Text style={styles.fieldLabel}>First name</Text>
+                <Text style={styles.fieldLabel}>Nome</Text>
                 <TextInput placeholder="Ana" placeholderTextColor="#B0B0B5" style={styles.input} />
               </View>
               <View style={styles.fieldHalf}>
-                <Text style={styles.fieldLabel}>Last name</Text>
+                <Text style={styles.fieldLabel}>Sobrenome</Text>
                 <TextInput placeholder="Silva" placeholderTextColor="#B0B0B5" style={styles.input} />
               </View>
             </View>
             <View style={styles.fieldGroup}>
-              <Text style={styles.fieldLabel}>Email</Text>
+              <Text style={styles.fieldLabel}>E-mail</Text>
               <TextInput
-                placeholder="you@example.com"
+                placeholder="voce@exemplo.com"
                 placeholderTextColor="#B0B0B5"
                 keyboardType="email-address"
                 style={styles.input}
               />
             </View>
             <View style={styles.fieldGroup}>
-              <Text style={styles.fieldLabel}>Mobile number</Text>
+              <Text style={styles.fieldLabel}>Celular</Text>
               <TextInput placeholder="(11) 99999-9999" placeholderTextColor="#B0B0B5" style={styles.input} />
             </View>
             <View style={styles.fieldGroup}>
-              <Text style={styles.fieldLabel}>Password</Text>
-              <TextInput placeholder="Create a password" placeholderTextColor="#B0B0B5" secureTextEntry style={styles.input} />
+              <Text style={styles.fieldLabel}>Senha</Text>
+              <TextInput placeholder="Crie uma senha" placeholderTextColor="#B0B0B5" secureTextEntry style={styles.input} />
             </View>
             <Pressable style={styles.primaryButton} onPress={() => router.replace('/(tabs)')}>
-              <Text style={styles.primaryButtonText}>Continue</Text>
+              <Text style={styles.primaryButtonText}>Continuar</Text>
             </Pressable>
           </View>
 
           <View style={styles.footerRow}>
-            <Text style={styles.footerText}>Already registered?</Text>
+            <Text style={styles.footerText}>Já tem cadastro?</Text>
             <Link href="/login" asChild>
               <Pressable>
-                <Text style={styles.linkBold}>Log in</Text>
+                <Text style={styles.linkBold}>Faça login</Text>
               </Pressable>
             </Link>
           </View>

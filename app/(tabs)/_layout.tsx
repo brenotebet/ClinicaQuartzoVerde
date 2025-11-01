@@ -32,36 +32,36 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Início',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="schedule"
         options={{
-          title: 'Schedule',
+          title: 'Agenda',
           tabBarIcon: ({ color }) => <IconSymbol size={26} name="clock.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="manage"
         options={{
-          title: 'Manage',
+          title: 'Gerenciar',
           tabBarIcon: ({ color }) => <IconSymbol size={26} name="square.and.pencil" color={color} />,
         }}
       />
       <Tabs.Screen
         name="calendar"
         options={{
-          title: 'Calendar',
+          title: 'Calendário',
           tabBarIcon: ({ color }) => <IconSymbol size={26} name="calendar" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="payments"
+        name="more"
         options={{
-          title: 'Payments',
-          tabBarIcon: ({ color }) => <IconSymbol size={26} name="creditcard.fill" color={color} />,
+          title: 'Mais',
+          tabBarIcon: ({ color }) => <IconSymbol size={26} name="line.3.horizontal" color={color} />,
         }}
       />
     </Tabs>

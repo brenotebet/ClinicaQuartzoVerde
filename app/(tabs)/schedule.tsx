@@ -2,58 +2,58 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Colors } from '@/constants/theme';
 
-const filters = ['All', 'Yoga', 'Hybrid', 'Pilates'];
+const filters = ['Todas', 'Yoga', 'Híbrido', 'Pilates'];
 
 const schedule = [
   {
-    day: 'Today',
+    day: 'Hoje',
     classes: [
       {
         name: 'Power Vinyasa',
         time: '07:00 - 07:50',
         coach: 'Camila Duarte',
-        studio: 'Studio Aura',
-        mood: 'Sunrise reset',
+        studio: 'Estúdio Aura',
+        mood: 'Recarregar ao amanhecer',
       },
       {
-        name: 'Hybrid Inferno',
+        name: 'Treino Híbrido Inferno',
         time: '12:30 - 13:20',
         coach: 'Ricardo Lopes',
-        studio: 'Studio Pulse',
-        mood: 'Performance push',
+        studio: 'Estúdio Pulse',
+        mood: 'Explosão de performance',
       },
       {
-        name: 'Reformer Foundations',
+        name: 'Pilates Reformer Foundations',
         time: '18:15 - 19:05',
         coach: 'Helena Prado',
-        studio: 'Studio Core',
-        mood: 'Alignment focus',
+        studio: 'Estúdio Core',
+        mood: 'Foco em alinhamento',
       },
     ],
   },
   {
-    day: 'Tomorrow',
+    day: 'Amanhã',
     classes: [
       {
-        name: 'Slow Flow + Breath',
+        name: 'Slow Flow + Respiração',
         time: '06:30 - 07:15',
         coach: 'Thais Rocha',
-        studio: 'Studio Aura',
-        mood: 'Grounded energy',
+        studio: 'Estúdio Aura',
+        mood: 'Energia centrada',
       },
       {
-        name: 'Hybrid Power Base',
+        name: 'Treino Híbrido Power Base',
         time: '13:00 - 13:50',
         coach: 'Daniel Costa',
-        studio: 'Studio Pulse',
-        mood: 'Strength endurance',
+        studio: 'Estúdio Pulse',
+        mood: 'Força e resistência',
       },
       {
         name: 'Pilates Sculpt',
         time: '19:00 - 19:50',
         coach: 'Lais Figueiredo',
-        studio: 'Studio Core',
-        mood: 'Core + mobility',
+        studio: 'Estúdio Core',
+        mood: 'Core e mobilidade',
       },
     ],
   },
@@ -63,8 +63,10 @@ export default function ScheduleScreen() {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Book your next burn</Text>
-        <Text style={styles.subtitle}>Pick a class, lock in your spot, and feel the clinic energy.</Text>
+        <Text style={styles.title}>Agende seu próximo treino</Text>
+        <Text style={styles.subtitle}>
+          Escolha a aula, garanta sua vaga e sinta a energia da clínica.
+        </Text>
 
         <ScrollView
           horizontal
@@ -73,8 +75,8 @@ export default function ScheduleScreen() {
           {filters.map((filter) => (
             <View
               key={filter}
-              style={[styles.filterChip, filter === 'All' && styles.filterChipActive]}>
-              <Text style={[styles.filterText, filter === 'All' && styles.filterTextActive]}>{filter}</Text>
+              style={[styles.filterChip, filter === 'Todas' && styles.filterChipActive]}>
+              <Text style={[styles.filterText, filter === 'Todas' && styles.filterTextActive]}>{filter}</Text>
             </View>
           ))}
         </ScrollView>
@@ -92,7 +94,7 @@ export default function ScheduleScreen() {
                     <Text style={styles.classMood}>{item.mood}</Text>
                   </View>
                   <View style={styles.coachBadge}>
-                    <Text style={styles.coachLabel}>Coach</Text>
+                    <Text style={styles.coachLabel}>Instrutor(a)</Text>
                     <Text style={styles.coachName}>{item.coach}</Text>
                   </View>
                   {index < section.classes.length - 1 && <View style={styles.divider} />}

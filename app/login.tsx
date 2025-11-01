@@ -25,51 +25,51 @@ export default function LoginScreen() {
           <View style={styles.brandRow}>
             <View>
               <Text style={styles.brandTitle}>Quartzo Verde</Text>
-              <Text style={styles.brandSubtitle}>Fitness Clinic</Text>
+              <Text style={styles.brandSubtitle}>Clínica Fitness</Text>
             </View>
             <View style={styles.badge}>
-              <Text style={styles.badgeText}>Mind • Body • Power</Text>
+              <Text style={styles.badgeText}>Mente • Corpo • Potência</Text>
             </View>
           </View>
 
           <View style={styles.heroWrapper}>
             <View style={styles.heroOrbLarge} />
             <View style={styles.heroOrbSmall} />
-            <Text style={styles.heroHeadline}>Stronger Every Session</Text>
-            <Text style={styles.heroTagline}>Yoga · Hybrid Training · Pilates</Text>
+            <Text style={styles.heroHeadline}>Mais forte a cada sessão</Text>
+            <Text style={styles.heroTagline}>Yoga · Treino Híbrido · Pilates</Text>
           </View>
 
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Welcome back</Text>
+            <Text style={styles.cardTitle}>Bem-vindo(a) de volta</Text>
             <Text style={styles.cardSubtitle}>
-              Log in to book immersive sessions aligned with your personal training rhythm.
+              Entre para reservar experiências imersivas alinhadas ao seu ritmo de treino.
             </Text>
             <View style={styles.fieldGroup}>
-              <Text style={styles.fieldLabel}>Email</Text>
+              <Text style={styles.fieldLabel}>E-mail</Text>
               <TextInput
-                placeholder="you@example.com"
+                placeholder="voce@exemplo.com"
                 placeholderTextColor="#B0B0B5"
                 keyboardType="email-address"
                 style={styles.input}
               />
             </View>
             <View style={styles.fieldGroup}>
-              <Text style={styles.fieldLabel}>Password</Text>
+              <Text style={styles.fieldLabel}>Senha</Text>
               <TextInput placeholder="••••••••" placeholderTextColor="#B0B0B5" secureTextEntry style={styles.input} />
             </View>
             <Pressable style={styles.primaryButton} onPress={() => router.replace('/(tabs)')}>
-              <Text style={styles.primaryButtonText}>Log in</Text>
+              <Text style={styles.primaryButtonText}>Entrar</Text>
             </Pressable>
             <Pressable>
-              <Text style={styles.link}>Forgot password?</Text>
+              <Text style={styles.link}>Esqueceu a senha?</Text>
             </Pressable>
           </View>
 
           <View style={styles.footerRow}>
-            <Text style={styles.footerText}>New to Quartzo Verde?</Text>
+            <Text style={styles.footerText}>Novo na Quartzo Verde?</Text>
             <Link href="/signup" asChild>
               <Pressable>
-                <Text style={styles.linkBold}>Create an account</Text>
+                <Text style={styles.linkBold}>Crie uma conta</Text>
               </Pressable>
             </Link>
           </View>

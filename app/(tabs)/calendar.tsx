@@ -1,8 +1,11 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Colors } from '@/constants/theme';
 
-const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+type Disciplina = 'Yoga' | 'Híbrido' | 'Pilates';
+
+const weekDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 
 const calendarMatrix = [
   [null, 1, 2, 3, 4, 5, 6],
@@ -12,53 +15,67 @@ const calendarMatrix = [
   [28, 29, 30, null, null, null, null],
 ];
 
-const classByDate: Record<number, { title: string; discipline: 'Yoga' | 'Hybrid' | 'Pilates'; time: string }[]> = {
+const classByDate: Record<number, { title: string; discipline: Disciplina; time: string }[]> = {
   2: [
-    { title: 'Sunset Flow', discipline: 'Yoga', time: '18:30' },
+    { title: 'Yoga Sunset Flow', discipline: 'Yoga', time: '18:30' },
   ],
   4: [
-    { title: 'Hybrid Inferno', discipline: 'Hybrid', time: '12:30' },
+    { title: 'Treino Híbrido Inferno', discipline: 'Híbrido', time: '12:30' },
     { title: 'Pilates Align', discipline: 'Pilates', time: '19:00' },
   ],
   8: [
-    { title: 'Hybrid Base', discipline: 'Hybrid', time: '07:00' },
+    { title: 'Treino Híbrido Base', discipline: 'Híbrido', time: '07:00' },
   ],
   14: [
     { title: 'Power Vinyasa', discipline: 'Yoga', time: '06:30' },
-    { title: 'Hybrid Boost', discipline: 'Hybrid', time: '13:00' },
+    { title: 'Treino Híbrido Boost', discipline: 'Híbrido', time: '13:00' },
   ],
   19: [
-    { title: 'Reformer Sculpt', discipline: 'Pilates', time: '18:30' },
+    { title: 'Pilates Reformer Sculpt', discipline: 'Pilates', time: '18:30' },
   ],
   22: [
-    { title: 'Grounded Yin', discipline: 'Yoga', time: '20:00' },
+    { title: 'Yoga Grounded Yin', discipline: 'Yoga', time: '20:00' },
   ],
 };
 
-const disciplineColors = {
+const disciplineColors: Record<Disciplina, string> = {
   Yoga: '#FFC49B',
-  Hybrid: Colors.light.tint,
+  'Híbrido': Colors.light.tint,
   Pilates: '#FFE6D1',
 };
 
+const monthLabel = 'Novembro 2024';
+
 export default function CalendarScreen() {
+  const [selectedDate, setSelectedDate] = useState<number | null>(14);
+  const todayDate = 14;
+
+  const selectedClasses = useMemo(() => {
+    if (!selectedDate) return [];
+    const items = classByDate[selectedDate] ?? [];
+    return [...items].sort((a, b) => a.time.localeCompare(b.time));
+  }, [selectedDate]);
+
+  const selectedDateLabel = selectedDate ? `${selectedDate} de novembro` : 'este dia';
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Clinic calendar</Text>
-        <Text style={styles.subtitle}>Visualize every Yoga, Hybrid Training, and Pilates session this month.</Text>
+        <Text style={styles.title}>Calendário da clínica</Text>
+        <Text style={styles.subtitle}>
+          Visualize todas as sessões de Yoga, Treino Híbrido e Pilates deste mês.
+        </Text>
 
         <View style={styles.calendarCard}>
           <View style={styles.monthHeader}>
             <View>
-              <Text style={styles.monthLabel}>November 2024</Text>
-              <Text style={styles.monthSubLabel}>Balanced program cadence</Text>
+              <Text style={styles.monthLabel}>{monthLabel}</Text>
+              <Text style={styles.monthSubLabel}>Cadência equilibrada do programa</Text>
             </View>
             <View style={styles.legendRow}>
-              {(['Yoga', 'Hybrid', 'Pilates'] as const).map((discipline) => (
+              {(Object.keys(disciplineColors) as Disciplina[]).map((discipline) => (
                 <View key={discipline} style={styles.legendItem}>
-                  <View
-                    style={[styles.legendDot, { backgroundColor: disciplineColors[discipline] }]} />
+                  <View style={[styles.legendDot, { backgroundColor: disciplineColors[discipline] }]} />
                   <Text style={styles.legendLabel}>{discipline}</Text>
                 </View>
               ))}
@@ -80,29 +97,56 @@ export default function CalendarScreen() {
                   return <View key={`${index}-${columnIndex}`} style={styles.emptyCell} />;
                 }
                 const classes = classByDate[date] ?? [];
-                const isToday = date === 14;
+                const isToday = date === todayDate;
+                const isSelected = date === selectedDate;
+
                 return (
-                  <View key={date} style={[styles.dayCell, isToday && styles.dayCellToday]}>
-                    <View style={styles.dayHeader}>
-                      <Text style={[styles.dayNumber, isToday && styles.dayNumberToday]}>{date}</Text>
-                      {isToday && <Text style={styles.todayBadge}>Today</Text>}
-                    </View>
-                    <View style={styles.classesColumn}>
+                  <Pressable
+                    key={date}
+                    style={[styles.dayCell, isSelected && styles.dayCellSelected, isToday && styles.dayCellToday]}
+                    onPress={() => setSelectedDate(date)}>
+                    <Text
+                      style={[
+                        styles.dayNumber,
+                        isToday && styles.dayNumberToday,
+                        isSelected && styles.dayNumberSelected,
+                      ]}>
+                      {date}
+                    </Text>
+                    <View style={styles.dotRow}>
                       {classes.map((item) => (
                         <View
                           key={`${date}-${item.title}`}
-                          style={[styles.classTag, { backgroundColor: disciplineColors[item.discipline] }]}
-                        >
-                          <Text style={styles.classTagTitle}>{item.title}</Text>
-                          <Text style={styles.classTagTime}>{item.time}</Text>
-                        </View>
+                          style={[styles.dayDot, { backgroundColor: disciplineColors[item.discipline] }]}
+                        />
                       ))}
                     </View>
-                  </View>
+                  </Pressable>
                 );
               })}
             </View>
           ))}
+        </View>
+
+        <View style={styles.detailsCard}>
+          <Text style={styles.detailsTitle}>Aulas em {selectedDateLabel}</Text>
+          {selectedClasses.length > 0 ? (
+            <View style={styles.detailsList}>
+              {selectedClasses.map((item) => (
+                <View key={`${selectedDate}-${item.title}`} style={styles.classDetailRow}>
+                  <View style={[styles.classBadge, { backgroundColor: disciplineColors[item.discipline] }]} />
+                  <View style={styles.classInfo}>
+                    <Text style={styles.classTitle}>{item.title}</Text>
+                    <Text style={styles.classMeta}>
+                      {item.discipline} • {item.time}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.emptyText}>Nenhuma aula agendada para este dia.</Text>
+          )}
         </View>
       </ScrollView>
     </View>
@@ -194,20 +238,23 @@ const styles = StyleSheet.create({
   dayCell: {
     flex: 1,
     backgroundColor: '#FFF7EF',
-    borderRadius: 18,
+    borderRadius: 16,
     marginHorizontal: 4,
-    padding: 12,
-    minHeight: 96,
+    paddingVertical: 12,
+    alignItems: 'center',
+    gap: 8,
   },
-  dayCellToday: {
+  dayCellSelected: {
     borderWidth: 2,
     borderColor: Colors.light.tint,
     backgroundColor: '#FFE9D6',
   },
-  dayHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  dayCellToday: {
+    shadowColor: Colors.light.tint,
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
   },
   dayNumber: {
     fontSize: 16,
@@ -217,29 +264,64 @@ const styles = StyleSheet.create({
   dayNumberToday: {
     color: Colors.light.tint,
   },
-  todayBadge: {
-    fontSize: 11,
-    fontWeight: '700',
+  dayNumberSelected: {
     color: Colors.light.tint,
-    textTransform: 'uppercase',
   },
-  classesColumn: {
-    marginTop: 8,
-    gap: 8,
+  dotRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 4,
   },
-  classTag: {
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
+  dayDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
   },
-  classTagTitle: {
-    fontSize: 13,
+  detailsCard: {
+    backgroundColor: '#fff',
+    borderRadius: 24,
+    padding: 24,
+    gap: 16,
+    shadowColor: '#FF6B00',
+    shadowOpacity: 0.08,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 3,
+  },
+  detailsTitle: {
+    fontSize: 20,
     fontWeight: '700',
     color: '#1F1F24',
   },
-  classTagTime: {
-    fontSize: 12,
+  detailsList: {
+    gap: 16,
+  },
+  classDetailRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  classBadge: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+  },
+  classInfo: {
+    flex: 1,
+    gap: 4,
+  },
+  classTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#1F1F24',
+  },
+  classMeta: {
+    fontSize: 13,
     color: '#6C6C70',
-    marginTop: 2,
+  },
+  emptyText: {
+    fontSize: 14,
+    color: '#6C6C70',
   },
 });
