@@ -1,29 +1,32 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * Updated brand colors for the Quartzo Verde Fitness Clinic app.
  */
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = '#2FB89B';
+const tintColorDark = '#44D5B8';
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#0F2F2B',
+    background: '#F4FCFA',
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: '#5FA89A',
+    tabIconDefault: '#9FD7C9',
     tabIconSelected: tintColorLight,
+    card: '#FFFFFF',
+    muted: '#E3F6F1',
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: '#E9FFFA',
+    background: '#061914',
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: '#84E7D0',
+    tabIconDefault: '#21443C',
     tabIconSelected: tintColorDark,
+    card: '#0F2B25',
+    muted: '#143C34',
   },
 };
 
